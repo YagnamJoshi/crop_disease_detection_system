@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Crop Disease Detection System</h1>
+        
+        <!-- Image Upload Form -->
+        <form method="POST" enctype="multipart/form-data">
+            <label for="imageUpload">Upload an image of the crop leaf:</label>
+            <input type="file" name="image" id="imageUpload" accept="image/*" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        <!-- Results Section -->
+        {% if crop_name %}
+        <div class="results">
+            <h2>Results</h2>
+            <p><strong>Crop Name:</strong> {{ crop_name }}</p>
+            <p><strong>Disease Detected:</strong> {{ disease_name }}</p>
+            <p><strong>Solution:</strong> {{ solution }}</p>
+            <p><strong>Confidence:</strong> {{ (confidence * 100) | round(2) }}%</p>
+            
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Developed with ❤️ by Creative Code X | Crop Disease Detection</p>
+    </footer>
+</body>
+</html>
